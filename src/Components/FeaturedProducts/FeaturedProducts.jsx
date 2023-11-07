@@ -18,7 +18,7 @@ export default function FeaturedProducts() {
 async function addProductToCart(id)
 {
 let response=await addToCart(id);
-if(response.data.status ==='success')
+if(response.data.status  ==='success')
 {
 toast.success('product is add to cart',{
     duration: 4000,

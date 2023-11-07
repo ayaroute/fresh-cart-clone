@@ -1,17 +1,28 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import {UserContext} from '../../Context/UserContext';
-
+              
 
 
 export default function Login() {
-  let {setUserToken}=useContext(UserContext);
+  let {UserToken,setUserToken}=useContext(UserContext);
   let navigate = useNavigate();
   const [error, seterror] = useState(null);
   const [isLoading, setisLoading] = useState(false);
+
+useEffect(()=>{
+
+  if(UserToken){
+navigate("./")
+  }
+  
+
+},[]);
+
+
 
   async function submitLogin(values) {
     setisLoading(true);
@@ -26,7 +37,7 @@ export default function Login() {
 
     if (data.message === 'success') {
       setisLoading(false);
-      localStorage.setItem('userToken' , data.token);
+      localStorage.setItem('userToken', data.token);
       setUserToken(data.token);
       navigate('/');
 
@@ -81,7 +92,7 @@ export default function Login() {
 
 
 
-
+<Link to='/forgetpassword' >Forget Password ..?</Link>
         {isLoading ? <button type="button" className='btn bg-main text-white mt-2'>
           <i className='fas fa-spinner fa-spin'></i> </button> :
           <div>

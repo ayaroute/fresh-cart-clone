@@ -54,7 +54,6 @@ export default function CartContextProvider(props) {
     }
 
 const [cardId,setCartId]=useState(null);
-const [numOfCartItems,setnumOfCartItems]=useState(0);
 async function  getCart(){
 
 let {data}=await getLoggedUserCart();
@@ -76,7 +75,7 @@ useEffect(()=>
 
 
 
-    return <CartContext.Provider value={{ numOfCartItems,cardId, addToCart, getLoggedUserCart, removeCartItem, updateCartItem, onlinePayment }}>
+    return <CartContext.Provider value={{cardId, addToCart, getLoggedUserCart, removeCartItem, updateCartItem, onlinePayment }}>
 
         {props.children}
 

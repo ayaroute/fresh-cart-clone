@@ -2,16 +2,14 @@ import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../assets/images/freshcart-logo.svg';
 import { UserContext } from '../../Context/UserContext';
-import { CartContext } from '../../Context/CartContext';
-import { data } from 'jquery';
 
 export default function Navbar() {
 
-let {UserToken ,setUserToken} =useContext(UserContext);
-let {numOfCartItems}=useContext(CartContext);
+const {userToken,setUserToken}=useContext(UserContext);
+console.log(userToken)
 let navigate =useNavigate();
 function LogOut(){
-  localStorage.setItem('UserToken',null);
+  localStorage.setItem('userToken',null);
   setUserToken(null);
   navigate('./login');
 }
@@ -33,7 +31,9 @@ function LogOut(){
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-      {UserToken !== null? <>
+
+
+      {userToken ? <>
        <li className="nav-item">
           <Link className="nav-link" to="/">Home</Link>
         </li>
@@ -53,8 +53,7 @@ function LogOut(){
         <li className="nav-item">
           <Link className="nav-link" to="/profile">profile</Link>
         </li>
-      </>
-      :''}
+      </>  :""}
      
        
        
@@ -69,7 +68,7 @@ function LogOut(){
              </li>
      
 
-     {UserToken !== null?<> <li className="nav-item">
+     {userToken ? <> <li className="nav-item">
      <span onClick={()=> LogOut()}      className="nav-link cursor-pointer" >Logout</span>
      </li>
   
@@ -81,7 +80,7 @@ function LogOut(){
        <Link className="nav-link" to="/register">Register</Link>
      </li>
      </>    
-}
+}      
    
     
     

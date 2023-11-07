@@ -17,17 +17,32 @@ import { Toaster } from 'react-hot-toast';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 let queryClient=new QueryClient();
-root.render(
+root.render( 
+  <UserContextProvider>
+
+  <QueryClientProvider client={queryClient}>
+
 
 <CartContextProvider>
-<QueryClientProvider client={queryClient}>
-  <UserContextProvider>
+
+
  <App />
-  </UserContextProvider>
   <ReactQueryDevtools initialIsOpen="false" position='top right'></ReactQueryDevtools>
-  </QueryClientProvider>
 <Toaster/>
+
 </CartContextProvider>
+</QueryClientProvider>
+</UserContextProvider>
+
+
+
+
+
+
+
+  
+
+
   
    
 );

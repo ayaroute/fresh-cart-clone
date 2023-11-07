@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import { Outlet } from 'react-router-dom';
 import { Offline, Online } from "react-detect-offline";
-
-
+import { UserContext } from '../../Context/UserContext';
 
 export default function Layout() {
 
+
+  
 
 
 

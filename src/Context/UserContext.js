@@ -1,12 +1,25 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export let UserContext = createContext();
 export default function UserContextProvider(props) {
 
-    const [UserToken, setUserToken] = useState(null);
+    // const [userToken, setUserToken] = useState(null);
    
+    
 
-    return <UserContext.Provider value={{UserToken,setUserToken}} >
+
+    let [userToken, setUserToken] = useState(localStorage.getItem("token")?true:false)
+    // let [userIsLoggedIn, setUserIsLoggedIn] = useState(localStorage.getItem("token")?true:false)
+
+
+    // // useEffect(() => {
+    //   if (localStorage.getItem('userToken') !== null) {
+    //     setUserToken(localStorage.getItem('userToken'))
+    //   }
+    // }, []);
+
+
+ return <UserContext.Provider value={{userToken,setUserToken}} >
 
         {props.children}
 

@@ -30,9 +30,9 @@ export default function Register() {
   }
 
   const validationSchema = Yup.object({
-    name: Yup.string().min(3, 'min length is 2 char').max(7, 'max is 7').required('name is required'),
+    name: Yup.string().min(3, 'min length is 2 char').max(7, 'max is 10').required('name is required'),
     email: Yup.string().required('email is required').email('email not valid'),
-    password: Yup.string().matches(/^[A-Z][a-z0-9]{5,10}$/, 'password is invalid').required('password is required'),
+    password: Yup.string().matches(/^[A-Z][a-z0-9]{5,10}$/, 'password first letter capital').required('password is required'),
     rePassword: Yup.string().oneOf([Yup.ref('password')]).required('repassworsd is required'),
     phone: Yup.string().matches(/^(002)?01[0-25][0-9]{8}$/, 'not match').required('phone is required')
   })
